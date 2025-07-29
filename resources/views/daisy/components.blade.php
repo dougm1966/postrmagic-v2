@@ -230,7 +230,7 @@
                 <h3 class="text-2xl font-semibold mb-4">Card</h3>
                 <div class="bg-base-200 p-4 rounded-lg">
                     <div class="card w-96 bg-base-100 shadow-xl">
-                        <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                        <figure><img src="images/dummy_avatar.png" alt="Shoes" /></figure>
                         <div class="card-body">
                             <h2 class="card-title">Shoes!</h2>
                             <p>If a dog chews shoes whose shoes does he choose?</p>
@@ -248,28 +248,28 @@
                 <div class="bg-base-200 p-4 rounded-lg">
                     <div class="carousel w-full max-w-lg mx-auto rounded-box">
                         <div id="slide1" class="carousel-item relative w-full">
-                            <img src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" class="w-full" />
+                            <img src="images/dummy_avatar.png" class="w-full" />
                             <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                 <a href="#slide4" class="btn btn-circle">❮</a>
                                 <a href="#slide2" class="btn btn-circle">❯</a>
                             </div>
                         </div>
                         <div id="slide2" class="carousel-item relative w-full">
-                            <img src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" class="w-full" />
+                            <img src="images/dummy_avatar.png" class="w-full" />
                             <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                 <a href="#slide1" class="btn btn-circle">❮</a>
                                 <a href="#slide3" class="btn btn-circle">❯</a>
                             </div>
                         </div>
                         <div id="slide3" class="carousel-item relative w-full">
-                            <img src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg" class="w-full" />
+                            <img src="images/dummy_avatar.png" class="w-full" />
                             <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                 <a href="#slide2" class="btn btn-circle">❮</a>
                                 <a href="#slide4" class="btn btn-circle">❯</a>
                             </div>
                         </div>
                         <div id="slide4" class="carousel-item relative w-full">
-                            <img src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" class="w-full" />
+                            <img src="images/dummy_avatar.png" class="w-full" />
                             <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                 <a href="#slide3" class="btn btn-circle">❮</a>
                                 <a href="#slide1" class="btn btn-circle">❯</a>
@@ -531,8 +531,8 @@
             <div class="mb-8">
                 <h3 class="text-2xl font-semibold mb-4">Mask</h3>
                 <div class="bg-base-200 p-4 rounded-lg flex flex-wrap gap-4">
-                    <img class="mask mask-squircle" src="https://img.daisyui.com/images/stock/photo-1567653418876-0e29a4b5b4aa.jpg" />
-                    <img class="mask mask-heart" src="https://img.daisyui.com/images/stock/photo-1567653418876-0e29a4b5b4aa.jpg" />
+                    <img class="mask mask-squircle" src="images/dummy_avatar.png" />
+                    <img class="mask mask-heart" src="images/dummy_avatar.png" />
                 </div>
             </div>
 
@@ -541,9 +541,15 @@
                 <h3 class="text-2xl font-semibold mb-4">Stack</h3>
                 <div class="bg-base-200 p-4 rounded-lg">
                     <div class="stack">
-                      <div class="grid w-36 h-24 rounded bg-primary text-primary-content place-content-center shadow-md">1</div>
-                      <div class="grid w-36 h-24 rounded bg-accent text-accent-content place-content-center rotate-6 shadow-md">2</div>
-                      <div class="grid w-36 h-24 rounded bg-secondary text-secondary-content place-content-center -rotate-6 shadow-md">3</div>
+                        <div class="border-base-content card bg-base-100 border text-center">
+                            <div class="card-body">1</div>
+                        </div>
+                        <div class="border-base-content card bg-base-100 border text-center">
+                            <div class="card-body">2</div>
+                        </div>
+                        <div class="border-base-content card bg-base-100 border text-center">
+                            <div class="card-body">3</div>
+                        </div>
                     </div>
                 </div>
             </div>

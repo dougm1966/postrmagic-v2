@@ -2,32 +2,32 @@
 
 ## Project Overview
 
-PostrMagic is a web application that uses AI to transform event posters into social media content. The project is currently undergoing a migration from a legacy PHP/XAMPP implementation (V1) to a modern Laravel 12 implementation (V2). This document serves as a handoff guide for AI assistants working on this project.
+PostrMagic is a web application that uses AI to transform event posters into social media content. This document serves as a handoff guide for AI assistants working on this project, built as a modern Laravel 12 application.
 
 ## Current Project Status [CRITICAL]
 
 The project is currently in the **PRE-IMPLEMENTATION DOCUMENTATION COMPLETE** phase with the following specific status:
 
 1. **UI Component Identification: COMPLETE**
-   - All UI components from V1 have been identified and added to the inventory document
+   - All UI components have been identified and added to the inventory document
    - No missing components remain to be discovered or added to the inventory structure
 
 2. **UI Component Detailed Documentation: COMPLETE**
    - All components are fully documented in the inventory
    - Each component includes detailed information on:
-     - Legacy file references
+     - File references
      - Screenshot references (with consistent path formatting)
      - Component breakdown with detailed UI elements
      - Data dependencies
-     - V2 Laravel implementation mapping
+     - Laravel implementation mapping
    - The following components have been recently completed and verified:
      - Billing & Subscription Management: Complete with component breakdown, interaction patterns, data dependencies, screenshots
      - Admin Analytics Dashboard: Complete with component breakdown, interaction patterns, data dependencies, screenshots
      - LLM Settings & Management Interface: Complete with full documentation
 
 3. **Screenshot References: STANDARDIZED**
-   - All screenshot references now use a consistent format: `![alt text](./screenshots-of-v1/filename.png)`
-   - Some screenshots are marked to be created during V2 buildout:
+   - All screenshot references now use a consistent format: `![alt text](./screenshots/filename.png)`
+   - Some screenshots are marked to be created during implementation:
      - Authentication pages (login-page.png, password-reset.png, registration.png)
      - Error pages (error-404.png)
 
@@ -76,16 +76,7 @@ No tasks remain to be completed before V2 implementation can begin.
 
 ## Project Structure
 
-### V1 Legacy Structure (XAMPP)
-- Located at: `c:\xampp\htdocs\postrmagic\`
-- Main entry: `index.php` (landing page)
-- User dashboard: `dashboard.php`
-- Admin dashboard: `admin/dashboard.php`
-- Shared components in `includes/` directory
-- Configuration in `config/` directory (gitignored)
-- Database layer: Modern `DatabaseManager` singleton with dual SQLite/MySQL support
-
-### V2 Laravel Structure (Planned)
+### PostrMagic V2 Structure
 - Located at: `\\wsl$\Ubuntu\home\ai1offs\projects\postrmagic-v2\`
 - Following standard Laravel 12 directory structure
 - Using Blade, Livewire, Tailwind CSS, and Alpine.js
@@ -141,21 +132,18 @@ No tasks remain to be completed before V2 implementation can begin.
 ## Component Implementation Details [REFERENCE]
 
 ### Authentication System
-- V1 Implementation: Custom PHP authentication system
+- Current Plan: Laravel Fortify/Jetstream
 - Components Documented: Login page, Registration page, Password reset flow
-- V2 Plan: Laravel Fortify/Jetstream
 - Features to Include: Email verification, two-factor authentication, rate limiting
 - Documentation Status: COMPLETE in inventory
 
 ### Error Handling
-- V1 Implementation: Custom error pages
+- Current Plan: Laravel error handling system with custom pages
 - Components Documented: 404 page, potentially others
-- V2 Plan: Laravel error handling system with custom pages
 - Features to Include: Error tracking for admin review
 - Documentation Status: COMPLETE in inventory
 
 ### Social Media Modal
-- V1 Implementation: Single dynamic modal with platform-specific content
 - Technical Implementation:
   - JavaScript functions: `openSocialModal(platform, event)`, `renderCurrentPost()`, `navigatePost(direction)`
   - Content structure: JavaScript object `socialMediaContent` organized by event and platform
@@ -163,18 +151,14 @@ No tasks remain to be completed before V2 implementation can begin.
 - Documentation Status: COMPLETE in inventory
 
 ### Dashboard Structure
-- V1 Implementation:
-  - Shared header: `includes/dashboard-header.php`
-  - User sidebar: `includes/sidebar-user.php`
-  - Admin sidebar: `includes/sidebar-admin.php`
-- V2 Plan: Maintain separation between user and admin interfaces
+- Implementation Plan:
+  - User dashboard with appropriate sidebar
+  - Admin dashboard with distinct sidebar
+  - Maintain separation between user and admin interfaces
 - Documentation Status: COMPLETE in inventory
 
 ### Media Management
-- V1 Implementation:
-  - User media: `media-library.php` in root directory
-  - Admin media: `admin/media.php` with `admin/media-backend.php`
-- V2 Plan:
+- Implementation Plan:
   - User view: Isolated to user's own media, sortable by event
   - Admin view: Comprehensive overview of all user media (statistics, storage, usage)
 - Documentation Status: COMPLETE in inventory
@@ -184,32 +168,32 @@ No tasks remain to be completed before V2 implementation can begin.
 - PHP 8.1+ required
 - MySQL database for production
 - SQLite for local development (auto-detected)
-- Tailwind CSS via CDN in V1, integrated via npm in V2
+- Tailwind CSS integrated via npm
 - OpenAI API integration (multi-provider system with cost tracking)
-- Laravel 12 framework for V2 implementation
+- Laravel 12 framework
 
-## LLM Integration Requirements [NEW]
+## LLM Integration Requirements [REFERENCE]
 
-### Legacy V1 LLM Implementation Structure
-- **Admin UI Components (admin/llm-settings.php)**
+### LLM Implementation Structure
+- **Admin UI Components**
   - API Key Management interface for OpenAI, Anthropic, and Gemini
   - Provider Status Dashboard (enabled/disabled, connection status)
   - Prompt Management System with versioning
   - Cost Analytics Dashboard (token usage, costs, response times)
-- **Core LLM Components (includes/llm-manager.php)**
+- **Core LLM Components**
   - Multi-Provider Support (OpenAI, Anthropic, Gemini)
   - Automatic Failover between providers
   - Provider Configuration by content type and event category
   - Cost Tracking system for token usage and costs
   - API Key Management at admin and user levels
-- **Prompt Management (includes/llm-prompt-manager.php)**
-  - Versioned Prompts with full history
+- **Prompt Management**
+  - Robust versioning system for prompts with full history
   - Content Type Specialization (platform-specific prompts)
   - Event Category Customization
   - Prompt Testing Framework
   - Template System with dynamic content placeholders
 
-### V2 LLM Integration Requirements
+### LLM Integration Requirements
 - **Provider Support**
   - Maintain support for OpenAI and Anthropic direct integrations
   - Add OpenRouter as a new provider option
@@ -226,7 +210,7 @@ No tasks remain to be completed before V2 implementation can begin.
   - Models should be categorized by capabilities (vision-capable vs. text-only, etc.)
 
 - **Prompt Management System**
-  - Maintain prompt versioning system from V1
+  - Implement robust prompt versioning system
   - Support per-process prompt management
   - Include process-specific template systems with appropriate placeholders
 
@@ -241,7 +225,7 @@ No tasks remain to be completed before V2 implementation can begin.
   - Implement per-model and per-process cost tracking
   - Provide cost budgeting/limits features
   - Include cost comparison visualizations between models
-  - Support migration of historical cost analytics data from V1
+  - Implement comprehensive cost analytics
 
 ## Implementation Sequence [AFTER DOCUMENTATION COMPLETION]
 
@@ -275,8 +259,8 @@ Once all documentation is complete, implementation should follow this sequence:
 ## Critical Project Rules [MUST FOLLOW]
 
 - Maintain STRICT separation between user and admin interfaces in documentation and implementation
-- Ensure screenshot references EXACTLY match actual filenames in the screenshots-of-v1 folder
-- Focus on accurate documentation that reflects the ACTUAL implementation in the legacy XAMPP project
+- Ensure screenshot references EXACTLY match actual filenames in the screenshots folder
+- Focus on accurate documentation that reflects the intended implementation for PostrMagic V2
 - Follow the implementation order and approach outlined in the Build Strategy document
 - Ensure components with incomplete documentation are FULLY documented before implementation begins
 - Do NOT begin implementation until ALL documentation is complete and verified

@@ -12,10 +12,10 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** `dashboard.php`, `admin/dashboard.php`
 *   **Screenshot:**
-![alt text](./screenshots-of-v1/admin-dashboard.png)
-![alt text](./screenshots-of-v1/admin-header-menu.png)
-![alt text](./screenshots-of-v1/user-dashboard.png)
-![alt text](./screenshots-of-v1/user-header-menu.png)
+![alt text](./screenshots/admin-dashboard.png)
+![alt text](./screenshots/admin-header-menu.png)
+![alt text](./screenshots/user-dashboard.png)
+![alt text](./screenshots/user-header-menu.png)
 *   **Purpose:** Provides the main structural container for all authenticated pages, including the header, sidebar, and content area.
 *   **Data Dependencies:**
     *   `$user`: The currently logged-in user object to determine which sidebar to show (user or admin).
@@ -28,7 +28,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** `includes/dashboard-header.php`
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/dashboard-header.png)
+    *   ![alt text](./screenshots/dashboard-header.png)
 *   **Purpose:** Displays the main navigation, user dropdown menu (with links to profile, settings, logout), and potentially a search bar or notifications.
 *   **Data Dependencies:**
     *   `$user`: The currently logged-in user object to display their name and avatar.
@@ -41,7 +41,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [includes/sidebar-user.php](cci:7://file:///c:/xampp/htdocs/postrmagic/includes/sidebar-user.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![User Sidebar](./screenshots-of-v1/user-sidebar.png)
+    *   ![User Sidebar](./screenshots/user-sidebar.png)
 *   **Purpose:** Provides the primary navigation for regular, non-admin users. It includes links for managing their own content and a profile section at the bottom.
 *   **Data Dependencies:**
     *   `$user`: A user object with `name` and `email`.
@@ -57,7 +57,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [includes/sidebar-admin.php](cci:7://file:///c:/xampp/htdocs/postrmagic/includes/sidebar-admin.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![Admin Sidebar](./screenshots-of-v1/admin-sidebar.png)
+    *   ![Admin Sidebar](./screenshots/admin-sidebar.png)
 *   **Purpose:** Provides primary navigation for administrators. It features a distinct color scheme and links for system-wide management.
 *   **Data Dependencies:**
     *   `$user`: An admin user object with `name`.
@@ -75,10 +75,10 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [index.php](cci:7://file:///c:/xampp/htdocs/postrmagic/index.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![Landing Page Event Showcase Grid](./screenshots-of-v1/landing-page-grid.png)
-    *   ![Social Media Post Modal - Announcement](./screenshots-of-v1/social-post-modal-facebook-announcement.png)
-    *   ![Social Media Post Modal - Behind the Scenes](./screenshots-of-v1/social-post-facebook-modal-behind-scenes.png)
-    *   ![Social Media Post Modal - Call to Action](./screenshots-of-v1/social-post-modal-facebook-cta.png)
+    *   ![Landing Page Event Showcase Grid](./screenshots/landing-page-grid.png)
+    *   ![Social Media Post Modal - Announcement](./screenshots/social-post-modal-facebook-announcement.png)
+    *   ![Social Media Post Modal - Behind the Scenes](./screenshots/social-post-facebook-modal-behind-scenes.png)
+    *   ![Social Media Post Modal - Call to Action](./screenshots/social-post-modal-facebook-cta.png)
 *   **Purpose:** Demonstrates the core functionality of PostrMagic by showcasing real examples of event posters and their AI-generated social media content. This serves as both a product demonstration and a conversion tool, showing potential users exactly what they can achieve with the platform.
 *   **Component Breakdown:**
     *   **Showcase Grid Container:** A responsive grid layout that displays 1-4 event examples depending on screen size (1 column on mobile, 2 on tablet, 4 on desktop).
@@ -136,7 +136,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [dashboard.php](cci:7://file:///c:/xampp/htdocs/postrmagic/dashboard.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/user-dashboard.png)
+    *   ![alt text](./screenshots/user-dashboard.png)
 *   **Purpose:** Serves as the main landing page for a logged-in user. It provides a summary of their activity, quick access to key features, and a list of their recent work.
 *   **Data Dependencies:**
     *   `$stats`: An object/array containing summary statistics (total events, active events, total views, engagement rate, media count).
@@ -155,7 +155,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [media-library.php](cci:7://file:///c:/xampp/htdocs/postrmagic/media-library.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/media-library.png)
+    *   ![alt text](./screenshots/media-library.png)
 *   **Purpose:** Provides a dedicated interface for users to view, manage, and upload their media files. It's a self-contained page that includes statistics, filtering, search, and the media display itself.
 *   **Component Breakdown:**
     *   **Stats Bar:** Displays total file count and total storage usage.
@@ -178,7 +178,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [media-library.php](cci:7://file:///c:/xampp/htdocs/postrmagic/media-library.php:0:0-0:0) (specifically the `#uploadModal` div and the associated JavaScript in the `MediaLibrary` object).
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/media-upload-modal.png)
+    *   ![alt text](./screenshots/media-upload-modal.png)
 *   **Purpose:** Provides a user-friendly interface for uploading one or more media files. It supports drag-and-drop, file selection, and displays a preview of the selected files before uploading.
 *   **UI Elements:**
     *   Drag-and-drop zone.
@@ -199,7 +199,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [events.php](cci:7://file:///c:/xampp/htdocs/postrmagic/events.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/events-list.png)
+    *   ![alt text](./screenshots/events-list.png)
 *   **Purpose:** Serves as the primary interface for a user to view, search, and manage all of their created events. It provides a comprehensive overview and entry points for event creation and editing.
 *   **Component Breakdown:**
     *   **Page Header:** Displays the "My Events" title and a prominent "Create Event" button that navigates to the event creation page.
@@ -222,7 +222,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [events.php](cci:7://file:///c:/xampp/htdocs/postrmagic/events.php:0:0-0:0) (specifically the `foreach` loop that renders each event)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/event-card.png)
+    *   ![alt text](./screenshots/event-card.png)
 *   **Purpose:** A reusable, self-contained visual block that displays a summary of a single event. This component is the core building block of the "Events List Page".
 *   **UI Elements:**
     *   **Event Thumbnail:** A prominent image representing the event. A status badge (`Active`, `Draft`, `Past`) is overlaid on the image.
@@ -242,7 +242,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [event-creation.php](cci:7://file:///c:/xampp/htdocs/postrmagic/event-creation.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/event-create-edit-form.png)
+    *   ![alt text](./screenshots/event-create-edit-form.png)
 *   **Purpose:** Provides a comprehensive, multi-section form for users to input all the necessary details for creating a new event. The same form is used for editing an existing event, where it would be pre-populated with the event's current data.
 *   **Component Breakdown:**
     *   **Basic Information Section:** A group of fields for core event details, including Title, Location, Event Date, Contact Name, Event Type, and Contact Email/Phone.
@@ -264,7 +264,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [event-detail.php](cci:7://file:///c:/xampp/htdocs/postrmagic/event-detail.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/event-details.png)
+    *   ![alt text](./screenshots/event-details.png)
 *   **Purpose:** Provides a comprehensive view of a single event with all its details, metrics, and management options. This is the main interface for users to view and manage a specific event after it has been created.
 *   **Component Breakdown:**
     *   **Back Navigation:** A simple link to return to the events list page.
@@ -312,7 +312,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [admin/dashboard.php](cci:7://file:///c:/xampp/htdocs/postrmagic/admin/dashboard.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/admin-dashboard.png)
+    *   ![alt text](./screenshots/admin-dashboard.png)
 *   **Purpose:** Provides a comprehensive, high-level overview of the entire platform for administrators. It focuses on system-wide statistics, resource monitoring, recent activity, and quick access to management tools.
 *   **Data Dependencies:**
     *   `$stats`: An object/array with system-level statistics (total users, active events, revenue, new users today, pending events, CPU/memory/disk usage, API calls).
@@ -330,7 +330,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [admin/media.php](cci:7://file:///c:/xampp/htdocs/postrmagic/admin/media.php:0:0-0:0), [admin/media-backend.php](cci:7://file:///c:/xampp/htdocs/postrmagic/admin/media-backend.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/admin-media-library.png)
+    *   ![alt text](./screenshots/admin-media-library.png)
 *   **Purpose:** Provides a centralized, system-wide view of all media uploaded by all users. This interface is for administrative and moderation purposes, allowing admins to search, review, and delete any media file on the platform.
 *   **Component Breakdown:**
     *   **Global Stats:** Displays system-wide media statistics, such as total files, total storage used, and average files per user.
@@ -351,7 +351,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [admin/events.php](cci:7://file:///c:/xampp/htdocs/postrmagic/admin/events.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/admin-events.png)
+    *   ![alt text](./screenshots/admin-events.png)
 *   **Purpose:** Provides administrators with a comprehensive interface to monitor, manage, and moderate all events created by users across the platform. This includes approving pending events, reviewing flagged content, and accessing detailed event metrics.
 *   **Component Breakdown:**
     *   **Page Header:** Title, description, and action buttons (Export, Settings)
@@ -373,7 +373,7 @@ This document serves as a master list for all UI components from the legacy XAMP
         *   Metrics (views, engagement)
         *   Last modified timestamp
         *   Action buttons (view, edit, approve, suspend)
-    *   **Pagination:** Controls for navigating through multiple pages of events
+    *   **Pagination:** Controls for navigating through event pages
 *   **Interactions:**
     *   Clicking filter tabs changes the displayed events list
     *   Search input filters events in real-time
@@ -402,7 +402,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [user-profile.php](cci:7://file:///c:/xampp/htdocs/postrmagic/user-profile.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/admin-profile.png)
+    *   ![alt text](./screenshots/admin-profile.png)
 *   **Purpose:** Provides users with a dedicated page to view and manage their profile information, including personal details, bio, avatar, and social links.
 *   **Component Breakdown:**
     *   **Profile Header:** Visual section with:
@@ -444,7 +444,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [settings.php](cci:7://file:///c:/xampp/htdocs/postrmagic/settings.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/system-settings.png)
+    *   ![alt text](./screenshots/system-settings.png)
 *   **Purpose:** Provides users with a centralized interface to manage their account settings, security preferences, and notification options.
 *   **Component Breakdown:**
     *   **Page Header:** Title and description
@@ -501,7 +501,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [admin/user-management.php](cci:7://file:///c:/xampp/htdocs/postrmagic/admin/user-management.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/admin-dashboard.png)
+    *   ![alt text](./screenshots/admin-dashboard.png)
 *   **Purpose:** Provides administrators with a comprehensive interface to manage user accounts, including creating new users, editing user details, assigning roles, and monitoring user statuses.
 *   **Component Breakdown:**
     *   **Page Header:** Title and description
@@ -554,7 +554,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [admin/settings.php](cci:7://file:///c:/xampp/htdocs/postrmagic/admin/settings.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/system-settings.png)
+    *   ![alt text](./screenshots/system-settings.png)
 *   **Purpose:** Provides administrators with a comprehensive interface to configure and manage system-wide settings, including API keys, email templates, LLM configurations, and security options.
 *   **Component Breakdown:**
     *   **Settings Navigation:** Tabbed interface with sections for:
@@ -619,7 +619,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** [admin/email-templates.php](cci:7://file:///c:/xampp/htdocs/postrmagic/admin/email-templates.php:0:0-0:0)
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/system-settings-email.png)
+    *   ![alt text](./screenshots/system-settings-email.png)
 *   **Purpose:** Provides administrators with a dedicated interface to create, edit, and manage email templates used throughout the system for notifications, user communications, and marketing.
 *   **Component Breakdown:**
     *   **Templates List:** Table of available email templates with:
@@ -665,7 +665,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 ### 4.1. Help Center
 
 *   **Legacy File(s):** `help.php`
-*   **Screenshot:** ![alt text](./screenshots-of-v1/help-center.png)
+*   **Screenshot:** ![alt text](./screenshots/help-center.png)
 *   **Purpose:** Provides users with a searchable knowledge base, categorized help articles, and support contact options.
 *   **Component Breakdown:**
     *   **Search Bar:** Prominent search functionality for help articles
@@ -701,7 +701,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 ### 4.2. Billing & Subscription Management
 
 *   **Legacy File(s):** `billing.php`
-*   **Screenshot:** ![alt text](./screenshots-of-v1/user-billing.png)
+*   **Screenshot:** ![alt text](./screenshots/user-billing.png)
 *   **Purpose:** Provides users with a comprehensive interface to view and manage their subscription details, payment methods, billing history, and billing information. Enables users to upgrade plans, cancel subscriptions, update payment methods, and download invoices.
 *   **Component Breakdown:**
     *   **Header Section:**
@@ -816,7 +816,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 ### 5.1. Admin Analytics Dashboard
 
 *   **Legacy File(s):** `admin/analytics.php`
-*   **Screenshot:** ![alt text](./screenshots-of-v1/analytics-dashboard.png)
+*   **Screenshot:** ![alt text](./screenshots/analytics-dashboard.png)
 *   **Purpose:** Provides administrators with a comprehensive overview of site performance, user activity, and engagement metrics. Enables data-driven decision-making through visual representations of key performance indicators.
 *   **Component Breakdown:**
     *   **Header Section:**
@@ -922,7 +922,7 @@ This document serves as a master list for all UI components from the legacy XAMP
 
 *   **Legacy File(s):** `admin/llm-settings.php`, `includes/llm-manager.php`, `includes/llm-prompt-manager.php`
 *   **Screenshot:**
-    *   ![alt text](./screenshots-of-v1/system-settings-ai-llm.png)
+    *   ![alt text](./screenshots/system-settings-ai-llm.png)
 *   **Purpose:** Provides administrators with a comprehensive toolset to configure, manage, test, and monitor all aspects of the AI language model integration within PostrMagic. It enables flexible assignment of LLM providers and models to specific processes, manages prompt versioning, facilitates prompt testing, and tracks usage costs across the system.
 *   **Component Breakdown:**
     *   **Tabbed Navigation Structure:**
@@ -1010,16 +1010,16 @@ This document serves as a master list for all UI components from the legacy XAMP
 *   **Purpose:** Provides programmatic access to PostrMagic functionality for integration with external systems and services.
 *   **Component Breakdown:**
     *   **Media API Endpoints:**
-        *   `GET /api/media.php?action=list`: List media items with optional filtering
-        *   `POST /api/media.php?action=upload`: Upload new media files
-        *   `PUT /api/media.php?action=update`: Update media metadata
-        *   `DELETE /api/media.php?action=delete`: Remove media items
-        *   `GET /api/media.php?action=tags`: Retrieve available media tags
-        *   `POST /api/media.php?action=search`: Search media by various criteria
-        *   `GET /api/media.php?action=stats`: Retrieve media usage statistics
+        *   `GET /api/v1/media`: List media items with optional filtering
+        *   `POST /api/v1/media`: Upload new media files
+        *   `PUT /api/v1/media/{id}`: Update media metadata
+        *   `DELETE /api/v1/media/{id}`: Remove media items
+        *   `GET /api/v1/media/tags`: Retrieve available media tags
+        *   `POST /api/v1/media/search`: Search media by various criteria
+        *   `GET /api/v1/media/stats`: Retrieve media usage statistics
     *   **Profile API Endpoints:**
-        *   `PUT /api/profile-update.php`: Update user profile information
-        *   `POST /api/profile-update.php?action=avatar`: Upload user avatar
+        *   `PUT /api/v1/profile`: Update user profile information
+        *   `POST /api/v1/profile/avatar`: Upload user avatar
 *   **Interactions:**
     *   Authentication via API key or session token
     *   JSON request and response format

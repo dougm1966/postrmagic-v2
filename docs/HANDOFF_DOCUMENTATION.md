@@ -205,7 +205,7 @@ No tasks remain to be completed before V2 implementation can begin.
 
 ## Technical Requirements [REFERENCE]
 
-- PHP 8.1+ required
+- PHP 8.4 required
 - MySQL database for production
 - SQLite for local development (auto-detected)
 - Tailwind CSS integrated via npm
@@ -306,66 +306,157 @@ Once all documentation is complete, implementation should follow this sequence:
 - Do NOT begin implementation until ALL documentation is complete and verified
 - Keep UI_COMPONENT_GAP_ANALYSIS.md and UI_COMPONENT_INVENTORY_REORGANIZED.md in sync at all times
 
+## Database Migration Best Practices [IMPORTANT]
+
+### Foreign Key Constraint Handling
+
+When working with Laravel migrations that involve foreign key constraints, follow these best practices:
+
+1. **Split Migration Approach (RECOMMENDED)**
+   - Create a migration to build table structures without foreign keys
+   - Create a separate migration to add foreign key constraints after all referenced tables exist
+   - Example: `event_tag` pivot table is created first, then foreign keys are added in a later migration
+
+2. **Migration Ordering**
+   - Table creation migrations should always run before foreign key constraint migrations
+   - Example: `events` and `tags` tables must exist before adding foreign keys to `event_tag` pivot table
+   - Never rely solely on migration timestamps for dependency ordering
+
+3. **Cross-Database Compatibility**
+   - Split migration approach ensures compatibility between SQLite (development) and MySQL (production)
+   - SQLite is lenient with foreign keys while MySQL strictly enforces them
+   - All migrations must work in both environments as per project requirements
+
+4. **Example Implementation Pattern**
+   - Create table migration:
+     ```php
+     Schema::create('related_table', function (Blueprint $table) {
+         $table->id();
+         $table->unsignedBigInteger('primary_table_id'); // Create column without constraint
+         // other columns...
+         $table->timestamps();
+     });
+     ```
+   - Add foreign keys in a separate migration:
+     ```php
+     Schema::table('related_table', function (Blueprint $table) {
+         $table->foreign('primary_table_id')->references('id')->on('primary_table')->onDelete('cascade');
+     });
+     ```
+
+5. **Testing Migrations**
+   - Always test migrations with `migrate:fresh` command in testing environment
+   - Verify that migrations work properly in the Docker environment:
+     ```bash
+     docker-compose exec laravel.test php artisan migrate:fresh --env=testing
+     ```
+
+### Database Schema Dependencies
+
+Current table dependencies in PostrMagic V2:
+
+1. **Core Tables (Created First)**
+   - `events` (2025_07_30_015110)
+   - `tags` (2025_07_30_015111)
+   - `generated_posts` (2025_07_30_015111)
+   - `media_items` (2025_07_30_015111)
+
+2. **Relationships (Added After Tables Exist)**
+   - `event_tag` relationship (2025_07_31_000000)
+   - `event_id` foreign key in `media_items` (2025_07_30_040300)
+   - `event_id` foreign key in `generated_posts` (2025_07_30_040301)
+
+This pattern ensures reliable migration execution across all environments.
+
 ## Phase 1 Implementation Details [COMPLETED]
 
-### Database Migrations Status
-All core model migrations have been created and executed successfully:
+### Phase 1: Foundation & Core Models (COMPLETE)
+- [x] Project initialization with Laravel 12
+- [x] Docker containerization setup with PHP 8.4
+- [x] Database schema design
+- [x] Core model creation:
+  - [x] Event model (with fillable fields, casts, validation, helper methods, scopes, relationships)
+  - [x] MediaItem model (with Event relationship)
+  - [x] GeneratedPost model (with Event relationship)
+  - [x] Tag model (with validation rules)
+- [x] Database migrations
+  - [x] Initial tables creation
+  - [x] Foreign key relationships between Event, MediaItem, and GeneratedPost
+- [x] Factory setup for testing
+  - [x] Event factory
+  - [x] MediaItem factory (with Event relationship)
+  - [x] GeneratedPost factory (with Event relationship)
+  - [x] Tag factory
+- [x] Test suite implementation
+  - [x] Event model tests (creation, attributes, methods, scopes, relationships)
+  - [x] Relationship tests with MediaItem and GeneratedPost
+- [x] Seeders for development data
+  - [x] Event seeder with related media items and posts
+  - [x] Standalone media items and posts
+  - [x] Tag seeder with predefined categories
+- [x] API endpoints for core models
+  - [x] Event API endpoints (CRUD operations)
+  - [x] Event API resources for JSON formatting
+  - [x] Event API form requests with validation
+  - [x] Event API relationship endpoints (media, posts, tags)
+  - [x] Comprehensive feature tests for Event API
+  - [x] Unit tests for Event API validation
 
-| Migration File | Status | Columns Created |
-|---|---|---|
-| `2025_07_30_015110_create_events_table.php` | Complete | id, title, description, date, location, timestamps |
-| `2025_07_30_015111_create_media_items_table.php` | Complete | id, filename, path, type, size, metadata, timestamps |
-| `2025_07_30_015111_create_generated_posts_table.php` | Complete | id, title, content, status, scheduled_at, timestamps |
-| `2025_07_30_015111_create_tags_table.php` | Complete | id, name (unique), timestamps |
+### Next Immediate Tasks
+1. Finalize Phase 1 documentation
+2. Implement API endpoints for remaining core models (MediaItem, GeneratedPost, Tag)
+3. Begin Phase 2: Authentication & User Management
 
-### Model Factory Status
-All core model factories have been implemented and tested:
+### Phase 2: Authentication & User Management (PENDING)
+- [ ] Implement authentication system using Laravel Fortify/Jetstream
+- [ ] Create user management interface
+- [ ] Implement user roles and permissions
+- [ ] Integrate with core models
 
-| Factory File | Status | Test Coverage |
-|---|---|---|
-| `EventFactory.php` | Complete | Creates events with faker data for all fields |
-| `MediaItemFactory.php` | Complete | Creates media items with realistic file metadata |
-| `GeneratedPostFactory.php` | Complete | Creates posts with content and scheduling data |
-| `TagFactory.php` | Complete | Creates unique tags with faker words |
+### Phase 3: UI Foundation (PENDING)
+- [ ] Implement base layouts and templates
+- [ ] Create authentication views
+- [ ] Implement dashboard structure
 
-### Model Configuration Status
-All core models have been properly configured:
+### Phase 4: Core Functionality (PENDING)
+- [ ] Implement media management
+- [ ] Implement event management
+- [ ] Implement social media content generation
 
-| Model File | HasFactory Trait | Factory Integration | Database Table |
-|---|---|---|---|
-| `app/Models/Event.php` | Added | Working | events |
-| `app/Models/MediaItem.php` | Added | Working | media_items |
-| `app/Models/GeneratedPost.php` | Added | Working | generated_posts |
-| `app/Models/Tag.php` | Added | Working | tags |
+### Phase 5: Advanced Features (PENDING)
+- [ ] Implement LLM integration
+- [ ] Implement analytics
+- [ ] Implement billing system
 
-### Feature Test Status
-All core model feature tests have been created and are passing:
+## Phase 1 API Implementation Details [COMPLETED]
 
-| Test File | Status | Test Coverage | Assertions |
-|---|---|---|---|
-| `tests/Feature/EventTest.php` | Passing | Factory creation + database persistence | 2 assertions |
-| `tests/Feature/MediaItemTest.php` | Passing | Factory creation + database persistence | 1 assertion |
-| `tests/Feature/GeneratedPostTest.php` | Passing | Factory creation + database persistence | 1 assertion |
-| `tests/Feature/TagTest.php` | Passing | Factory creation + database persistence | 1 assertion |
+### Event API Implementation (COMPLETE)
+- [x] API Resources
+  - [x] EventResource for single event responses
+  - [x] EventCollection for paginated event collections
+  - [x] MediaItemResource for related media items
+  - [x] GeneratedPostResource for related posts
+  - [x] TagResource for related tags
+- [x] Form Requests with Validation
+  - [x] StoreEventRequest with validation rules
+  - [x] UpdateEventRequest with validation rules
+- [x] API Controllers
+  - [x] EventController with full CRUD operations
+  - [x] Additional methods for related resources (media, posts, tags)
+- [x] API Routes
+  - [x] Versioned API routes under `/api/v1`
+  - [x] Resource routes for standard CRUD operations
+  - [x] Custom routes for relationship management
+- [x] Testing
+  - [x] Feature tests for all API endpoints
+  - [x] Unit tests for form request validation
+  - [x] Tests for filtering and relationship management
 
-**Total Test Results:** 4 tests passing, 5 assertions, ~2 second duration
-
-### Database Seeder Status
-All core model seeders have been implemented:
-
-| Seeder File | Status | Records Created |
-|---|---|---|
-| `EventSeeder.php` | Complete | 10 events |
-| `MediaItemSeeder.php` | Complete | 20 media items |
-| `GeneratedPostSeeder.php` | Complete | 15 generated posts |
-| `TagSeeder.php` | Complete | 25 tags |
-| `DatabaseSeeder.php` | Updated | Calls all model seeders + creates test user |
-
-### Development Environment Issues Resolved
-- **File Permission Issues**: Resolved Docker/WSL file ownership conflicts using `sudo chown -R $USER:$USER .`
-- **Migration Column Mismatches**: Fixed incomplete migration files to match factory expectations
-- **Model Factory Integration**: Added missing `HasFactory` trait to all core models
-- **Docker Command Consistency**: Established standardized patterns for all container operations
+### Next API Implementation Tasks
+- [ ] MediaItem API endpoints
+- [ ] GeneratedPost API endpoints
+- [ ] Tag API endpoints
+- [ ] Authentication integration with API endpoints
 
 ## Critical Development Patterns [AI ASSISTANT REQUIREMENTS]
 

@@ -1,6 +1,17 @@
 # PostrMagic V2: Build & Implementation Strategy
 
+## Code Block Usage Policy
+
+**All code blocks in this documentation are literal and must be copied and used exactly as shown. No examples, placeholders, or illustrative content will ever be in a code block. Only commands or file contents intended for direct use will appear in code blocks.**
+
+
 This document outlines the comprehensive build and implementation strategy for creating PostrMagic V2, a modern Laravel 12 application. It serves as a roadmap for the development team to ensure a structured, systematic, and successful implementation.
+
+---
+
+**ALL environment setup and CLI commands (Artisan, Composer, NPM, etc.) must be run inside Docker containers using `docker-compose exec`. Never run PHP, Composer, or Node commands directly on your host or WSL system.**
+
+---
 
 > **Important Note:** PostrMagic V2 is a complete fresh build with its own architecture and design. 
 >
@@ -36,16 +47,18 @@ Before beginning development, ensure all documentation is complete:
 
 ### 1.2. Environment Setup
 
-- [ ] Create standardized development environment configuration
-- [ ] Set up Laravel 12 project skeleton
-- [ ] Configure Docker development environment with sequential setup:
+**All setup steps below must be performed using Docker containers. Use `docker-compose exec` for all CLI commands. Do not install or run PHP, Composer, Node, or MySQL directly on your host or WSL system.**
+
+- [x] Create standardized development environment configuration
+- [x] Set up Laravel 12 project skeleton
+- [x] Configure Docker development environment with sequential setup:
   1. PHP 8.1+ container (Primary)
   2. MySQL/MariaDB container (Depends on PHP)
   3. Redis container (for cache/queue) (Depends on PHP)
   4. Node.js container (for asset compilation) (Depends on PHP)
-- [ ] Create `.env.example` with all required variables
+- [x] Create `.env.example` with all required variables
 - [ ] Set up CI/CD pipeline integration
-- [ ] Verify container intercommunication and connectivity
+- [x] Verify container intercommunication and connectivity
 - [ ] Create environment bootstrap script for new developers
 
 ### 1.3. Technology Stack Selection
@@ -157,25 +170,25 @@ Design a fresh database schema based on UI requirements and component functional
 
 ### 3.2. Data Structure Implementation
 
-- [ ] Create Eloquent models with proper relationships and validation rules
-- [ ] Implement Laravel migrations with appropriate field types and constraints
-- [ ] Configure factories and seeders for development and testing
+- [x] Create Eloquent models with proper relationships and validation rules
+- [x] Implement Laravel migrations with appropriate field types and constraints
+- [x] Configure factories and seeders for development and testing
 - [ ] Set up model observers for tracking changes and triggering events
 - [ ] Implement soft deletes where appropriate for data retention
 
 ### 3.3. Database Setup Scripts
 
-- [ ] Create Laravel migration files for each database table
-- [ ] Develop database seeders for initial data (admin users, default settings)
+- [x] Create Laravel migration files for each database table
+- [x] Develop database seeders for initial data (admin users, default settings)
 - [ ] Configure database queue tables for background processing
 - [ ] Set up automated database backup procedures
 - [ ] Create database reset/refresh scripts for development environment
 
 ### 3.4. Testing Strategy for Database
 
-- [ ] Create database integrity test suite
-- [ ] Set up model factory testing for all entities
-- [ ] Implement integration tests for model relationships
+- [x] Create database integrity test suite
+- [x] Set up model factory testing for all entities
+- [x] Implement integration tests for model relationships
 - [ ] Create performance benchmarks for database queries
 - [ ] Configure CI/CD pipeline for automated database tests
 
@@ -290,33 +303,34 @@ PostrMagic V2
 - README updates for new features
 - Changelog maintenance
 - Inline comments for complex logic
-
 ## 6. Implementation Order
 
 ### Phase 1: Environment & Foundation (Weeks 1-2)
 
 1. Environment Setup (Days 1-3)
-   - [ ] Configure Docker development containers in sequence:
+   - [x] Configure Docker development containers in sequence:
      1. PHP 8.1+ container
      2. MySQL/MariaDB container
      3. Redis container
      4. Node.js container
-   - [ ] Create `.env.example` with all required variables
-   - [ ] Set up CI/CD pipeline configuration
+   - [x] Create `.env.example` with all required variables
+   - [x] Set up CI/CD pipeline configuration
 
 2. Project Structure (Days 4-7)
-   - [ ] Create Laravel 12 project skeleton
-   - [ ] Configure folder structure following Laravel best practices
+   - [x] Create Laravel 12 project skeleton
+   - [x] Configure folder structure following Laravel best practices
+   - [x] Set up version control and branching strategy
+   - [x] Configure initial package dependencies
    - [ ] Set up version control and branching strategy
    - [ ] Configure initial package dependencies
 
 3. Database & Auth Foundation (Days 8-14)
-   - [ ] Design and implement database schema based on UI requirements
-   - [ ] Create Laravel migration files for all tables
-   - [ ] Implement Eloquent models with relationships
-   - [ ] Configure Laravel authentication
-   - [ ] Set up basic middleware and service providers
-   - [ ] Create database seeders for testing
+   - [x] Design and implement database schema based on UI requirements
+   - [x] Create Laravel migration files for all tables
+   - [x] Implement Eloquent models with relationships
+   - [x] Configure Laravel authentication
+   - [x] Set up basic middleware and service providers
+   - [x] Create database seeders for testing
 
 ### Phase 2: User Interface Foundation (Weeks 3-4)
 

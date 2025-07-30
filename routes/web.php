@@ -19,4 +19,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
+    // Resource routes for core entities
+    Route::resource('events', App\Http\Controllers\EventController::class);
+    Route::resource('media-items', App\Http\Controllers\MediaItemController::class);
+    Route::resource('generated-posts', App\Http\Controllers\GeneratedPostController::class);
+    Route::resource('tags', App\Http\Controllers\TagController::class);
 });

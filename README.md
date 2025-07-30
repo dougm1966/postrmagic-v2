@@ -7,6 +7,52 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Code Block Usage Policy
+
+**IMPORTANT:** Any code block in this documentation is meant to be copied and used exactly as shown—either as a terminal command or as file content. Code blocks will never contain examples, placeholders, or illustrative content. Any non-literal or reference content will appear outside code blocks.
+
+## Dockerized Development Environment
+
+**IMPORTANT:** All development, build, and CLI commands for PostrMagic V2 must be run inside Docker containers using `docker-compose exec`. Do NOT install PHP, Composer, Node, or MySQL on your host or WSL system. All services are fully containerized.
+
+### Onboarding & Usage
+
+1. **Start the Docker environment** (from the project root):
+   ```sh
+   docker-compose up -d
+   ```
+
+2. **Run Laravel Artisan commands** (from the project root):
+   ```sh
+   docker-compose exec laravel.test php artisan migrate
+   docker-compose exec laravel.test php artisan make:model Example
+   ```
+
+3. **Install Composer dependencies**:
+   ```sh
+   docker-compose exec laravel.test composer install
+   ```
+
+4. **Run NPM/Yarn commands** (for asset building):
+   ```sh
+   docker-compose exec node npm install
+   docker-compose exec node npm run dev
+   ```
+
+5. **Check logs**:
+   ```sh
+   docker-compose logs
+   ```
+
+6. **Stop the environment**:
+   ```sh
+   docker-compose down
+   ```
+
+**Never run PHP, Composer, or Node commands directly on your host or WSL system. Always use Docker.**
+
+---
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -45,6 +91,8 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[Active Logic](https://activelogic.com)**
 
 ## Contributing
+
+All contributions must follow the Dockerized workflow described above. Do not commit or push changes that require host-level dependencies. See the 'Dockerized Development Environment' section for command usage.
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
